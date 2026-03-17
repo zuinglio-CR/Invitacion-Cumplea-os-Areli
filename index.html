@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Mi 1er Añito! - Areli Valentina</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --mostaza: #e9b33d;
+            --rosa-viejo: #d6818a;
+            --terracota: #b86b5e;
+            --celeste-gris: #a2c1cc;
+            --crema-fondo: #fdf8f2;
+            --texto: #5d4037;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--crema-fondo);
+            font-family: 'Quicksand', sans-serif;
+            color: var(--texto);
+            display: flex;
+            justify-content: center;
+            background-image: radial-gradient(var(--rosa-viejo) 1px, transparent 1px);
+            background-size: 40px 40px;
+            position: relative;
+        }
+
+        /* CONTENEDOR DE MÚSICA EN HORIZONTAL */
+        .contenedor-musica-flotante {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            display: flex;
+            align-items: center; /* Centrado vertical */
+            gap: 12px; /* Espacio entre el dedo, botón y texto */
+            background-color: white; /* Fondo para que resalte todo el bloque */
+            padding: 10px 15px;
+            border-radius: 50px; /* Bordes muy redondeados */
+            border: 2px solid var(--mostaza);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .icon-dedo {
+            font-size: 1.8em; /* Dedo visible */
+            color: var(--terracota);
+            animation: move-dedo 1s infinite alternate; /* Animación de señalar */
+        }
+
+        @keyframes move-dedo {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(5px); }
+        }
+
+        .btn-musica {
+            background: var(--mostaza); /* Fondo mostaza para la margarita */
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6em; /* Margarita clara */
+            color: white; /* Color de la margarita */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: pulse-margarita 2s infinite;
+            transition: 0.3s;
+        }
+
+        @keyframes pulse-margarita {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 179, 61, 0.4); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(233, 179, 61, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 179, 61, 0); }
+        }
+
+        /* TEXTO DE INSTRUCCIÓN A LA DERECHA */
+        .texto-musica-instruccion {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.9em; /* Tamaño de letra legible */
+            color: var(--mostaza);
+            text-align: left;
+            max-width: 140px; /* Ancho controlado */
+            line-height: 1.2;
+        }
+
+        .contenedor-principal {
+            max-width: 450px;
+            width: 100%;
+            background: white;
+            margin: 15px;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(93, 64, 55, 0.1);
+            border: 6px solid white;
+            position: relative;
+        }
+
+        .margarita-deco { position: absolute; font-size: 2.5em; z-index: 10; }
+
+        .hero-foto {
+            width: 100%;
+            height: 400px; 
+            background-image: url('https://i.postimg.cc/Xv31t7mj/IMG-3948.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 6px solid var(--mostaza);
+        }
+
+        .cuerpo-invitacion {
+            padding: 30px 25px;
+            text-align: center;
+            background: linear-gradient(180deg, #fff 0%, var(--crema-fondo) 100%);
+        }
+
+        .nombre-bebe { font-family: 'Pacifico', cursive; font-size: 2.8em; color: var(--terracota); margin: 10px 0; }
+        .primer-anito { font-family: 'Fredoka', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 1em; color: var(--mostaza); margin-bottom: 25px; }
+        .invitado { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--terracota); font-size: 1.6em; display: block; margin: 15px 0; }
+
+        .texto-tierno { line-height: 1.7; margin-bottom: 25px; color: var(--texto); font-size: 1.05em; background: white; padding: 20px; border-radius: 30px; border: 2px solid var(--crema-fondo); }
+        .foto-secundaria { width: 85%; border-radius: 30px; border: 6px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); margin: 20px auto; display: block; }
+
+        .detalles { background: #fff9f0; border-radius: 35px; padding: 25px 15px; margin: 30px 0; border: 2px solid var(--mostaza); }
+        .fecha { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1.3em; color: var(--terracota); }
+
+        .reloj-tit { font-family: 'Fredoka', sans-serif; font-weight: 700; margin-bottom: 15px; color: var(--terracota); }
+        .reloj-wrap { display: flex; justify-content: center; gap: 12px; margin-bottom: 35px; }
+        .reloj-item { background: white; border: 2px solid var(--celeste-gris); padding: 10px; border-radius: 20px; min-width: 70px; }
+        .reloj-item span { font-size: 1.6em; font-weight: 700; color: var(--terracota); }
+        .reloj-item small { font-size: 0.7em; display: block; font-weight: 700; color: var(--celeste-gris); }
+
+        .btn-confirmar { display: block; text-decoration: none; background: var(--rosa-viejo); color: white; padding: 18px; margin: 10px 0; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1em; box-shadow: 0 4px 0 #b3636b; }
+        .btn-papa { background: var(--celeste-gris); box-shadow: 0 4px 0 #7fa6b3; }
+        .footer-decor { font-size: 2em; margin-top: 20px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor-musica-flotante" id="musicaControlador">
+        <div class="icon-dedo">👉</div> <button class="btn-musica" onclick="toggleMusica()" id="musicaControl">🌼</button>
+        <div class="texto-musica-instruccion" id="musicaTexto">
+            Toca la margarita para música
+        </div>
+    </div>
+    <audio id="miMusica" loop preload="auto">
+        <source src="https://www.dropbox.com/scl/fi/aaxeyu5xwxkps9w17we1g/audio-music-.mp3.mpeg?rlkey=70fcledht2u6fqytxxmrltmtf&st=y8pfa0mb&dl=1" type="audio/mpeg">
+    </audio>
+
+    <div class="contenedor-principal">
+        <div class="margarita-deco" style="top: 10px; right: 10px;">🌼</div>
+        <div class="margarita-deco" style="top: 380px; left: -10px;">🌼</div>
+
+        <div class="hero-foto"></div>
+
+        <div class="cuerpo-invitacion">
+            <div class="nombre-bebe">Areli Valentina</div>
+            <div class="primer-anito">🌼 Mi Primer Añito 🌼</div>
+
+            <span id="invitado-display" class="invitado">Invitado</span>
+            
+            <p class="texto-tierno">
+                "Hace un año llegué para llenar de luz cada rincón de mi hogar. 
+                Entre risas, juegos y mis primeros pasos, hoy celebro mi primer añito 
+                y nada me haría más feliz que compartir esta alegría contigo."
+            </p>
+
+            <img src="https://i.postimg.cc/hGrZnRR4/IMG-3952.jpg" alt="Areli" class="foto-secundaria">
+
+            <div class="detalles">
+                <div class="fecha">DOMINGO 29 DE MARZO</div>
+                <div class="lugar">📍 Salón "La Prechochura"<br>A las 3:30 PM</div>
+                <br>
+                <a href="http://googleusercontent.com/maps.google.com/5" target="_blank" style="color:var(--terracota); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--mostaza);">Ver ubicación en el mapa 🗺️</a>
+            </div>
+
+            <div class="reloj-tit">¿CUÁNTO FALTA?</div>
+            <div id="reloj" class="reloj-wrap">
+                <div class="reloj-item"><span id="dias">00</span><small>DÍAS</small></div>
+                <div class="reloj-item"><span id="horas">00</span><small>HORAS</small></div>
+                <div class="reloj-item"><span id="minutos">00</span><small>MIN.</small></div>
+            </div>
+
+            <div style="display: flex; flex-direction: column;">
+                <a id="wa-mama" target="_blank" class="btn-confirmar">CONFIRMAR CON MAMÁ 🌼</a>
+                <a id="wa-papa" target="_blank" class="btn-confirmar btn-papa">CONFIRMAR CON PAPÁ ✨</a>
+            </div>
+
+            <div class="footer-decor">🌼 🕊️ 🌼</div>
+        </div>
+    </div>
+
+    <script>
+        var musica = document.getElementById("miMusica");
+        var btn = document.getElementById("musicaControl");
+        var textoMusica = document.getElementById("musicaTexto");
+        var iconoDedo = document.querySelector('.icon-dedo');
+
+        function toggleMusica() {
+            if (musica.paused) {
+                musica.play().then(() => {
+                    btn.innerText = "⏸️";
+                    btn.style.animation = "none";
+                    // Cambiamos el dedo al reproducir
+                    iconoDedo.innerHTML = "⏸️";
+                    iconoDedo.style.animation = "none";
+                    // Cambiamos el texto al reproducir
+                    textoMusica.innerHTML = 'Música sonando...';
+                }).catch(error => {
+                    console.log("Error al reproducir audio:", error);
+                    alert("¡Inténtalo de nuevo presionando la margarita!");
+                });
+            } else {
+                musica.pause();
+                btn.innerText = "🌼";
+                btn.style.animation = "pulse-margarita 2s infinite";
+                // Volvemos al dedo original
+                iconoDedo.innerHTML = "👉";
+                iconoDedo.style.animation = "move-dedo 1s infinite alternate";
+                // Volvemos al texto original
+                textoMusica.innerHTML = 'Toca la margarita para música';
+            }
+        }
+
+        const query = new URLSearchParams(window.location.search);
+        const nombre = (query.get('invitados') || "Amigo/a").replace(/_/g, ' ');
+        document.getElementById('invitado-display').innerText = nombre;
+
+        const numM = "51918668270"; 
+        const numP = "51954132546";
+        const mensaje = encodeURIComponent(`¡Hola! Soy (${nombre}), confirmo nuestra asistencia, nos vemos en el cumpleaños. ✨`);
+        document.getElementById('wa-mama').href = `https://wa.me/${numM}?text=${mensaje}`;
+        document.getElementById('wa-papa').href = `https://wa.me/${numP}?text=${mensaje}`;
+
+        const meta = new Date("2026-03-29T15:30:00").getTime();
+        function update() {
+            const now = new Date().getTime();
+            const diff = meta - now;
+            if (diff > 0) {
+                document.getElementById('dias').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('horas').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutos').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            }
+        }
+        setInterval(update, 1000);
+        update();
+    </script>
+</body>
+</html>
