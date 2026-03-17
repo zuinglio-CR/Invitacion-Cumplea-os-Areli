@@ -30,7 +30,7 @@
             position: relative;
         }
 
-        /* BLOQUE DE MÚSICA FLOTANTE */
+        /* BLOQUE DE MÚSICA FLOTANTE - OPTIMIZADO */
         .contenedor-musica-flotante {
             position: fixed;
             top: 15px;
@@ -150,7 +150,7 @@
         </div>
     </div>
     
-    <audio id="miMusica" loop preload="auto">
+    <audio id="miMusica" loop playsinline preload="auto">
         <source src="https://www.dropbox.com/scl/fi/aaxeyu5xwxkps9w17we1g/audio-music-.mp3.mpeg?rlkey=70fcledht2u6fqytxxmrltmtf&st=y8pfa0mb&dl=1" type="audio/mpeg">
     </audio>
 
@@ -178,7 +178,7 @@
                 <div class="fecha">DOMINGO 29 DE MARZO</div>
                 <div class="lugar">📍 Salón "LA PRECHOCHURA"<br>Av. Oasis, Tarapoto</div>
                 <br>
-                <a href="https://maps.app.goo.gl/Wu6DFzboLDqErdvP8" target="_blank" style="color:var(--terracota); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--mostaza);">Ver ubicación en el mapa 🗺️</a>
+                <a href="https://maps.app.goo.gl/xdVLe41S9jnFUjKM9" target="_blank" style="color:var(--terracota); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--mostaza);">Ver ubicación en el mapa 🗺️</a>
             </div>
 
             <div class="reloj-tit">¿CUÁNTO FALTA?</div>
@@ -205,6 +205,7 @@
 
         function toggleMusica() {
             if (musica.paused) {
+                // Mejora para iPhone: forzar carga antes de play
                 musica.play().then(() => {
                     btn.innerText = "⏸️";
                     btn.style.animation = "none";
@@ -212,7 +213,9 @@
                     iconoDedo.style.animation = "none";
                     textoMusica.innerHTML = 'Música sonando...';
                 }).catch(error => {
-                    alert("¡Presiona la margarita para escuchar la música!");
+                    console.log("Re-intentando carga para iOS...");
+                    musica.load();
+                    musica.play();
                 });
             } else {
                 musica.pause();
