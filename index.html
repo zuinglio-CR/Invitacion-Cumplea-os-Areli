@@ -30,26 +30,26 @@
             position: relative;
         }
 
-        /* CONTENEDOR DE MÚSICA EN HORIZONTAL */
+        /* BLOQUE DE MÚSICA FLOTANTE */
         .contenedor-musica-flotante {
             position: fixed;
             top: 15px;
             right: 15px;
             z-index: 1000;
             display: flex;
-            align-items: center; /* Centrado vertical */
-            gap: 12px; /* Espacio entre el dedo, botón y texto */
-            background-color: white; /* Fondo para que resalte todo el bloque */
+            align-items: center;
+            gap: 12px;
+            background-color: white;
             padding: 10px 15px;
-            border-radius: 50px; /* Bordes muy redondeados */
+            border-radius: 50px;
             border: 2px solid var(--mostaza);
             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
 
         .icon-dedo {
-            font-size: 1.8em; /* Dedo visible */
+            font-size: 1.8em;
             color: var(--terracota);
-            animation: move-dedo 1s infinite alternate; /* Animación de señalar */
+            animation: move-dedo 1s infinite alternate;
         }
 
         @keyframes move-dedo {
@@ -58,7 +58,7 @@
         }
 
         .btn-musica {
-            background: var(--mostaza); /* Fondo mostaza para la margarita */
+            background: var(--mostaza);
             border: 2px solid white;
             border-radius: 50%;
             width: 50px;
@@ -67,8 +67,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6em; /* Margarita clara */
-            color: white; /* Color de la margarita */
+            font-size: 1.6em;
+            color: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             animation: pulse-margarita 2s infinite;
             transition: 0.3s;
@@ -80,14 +80,13 @@
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 179, 61, 0); }
         }
 
-        /* TEXTO DE INSTRUCCIÓN A LA DERECHA */
         .texto-musica-instruccion {
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
-            font-size: 0.9em; /* Tamaño de letra legible */
+            font-size: 0.9em;
             color: var(--mostaza);
             text-align: left;
-            max-width: 140px; /* Ancho controlado */
+            max-width: 140px;
             line-height: 1.2;
         }
 
@@ -144,11 +143,13 @@
 <body>
 
     <div class="contenedor-musica-flotante" id="musicaControlador">
-        <div class="icon-dedo">👉</div> <button class="btn-musica" onclick="toggleMusica()" id="musicaControl">🌼</button>
+        <div class="icon-dedo">👉</div>
+        <button class="btn-musica" onclick="toggleMusica()" id="musicaControl">🌼</button>
         <div class="texto-musica-instruccion" id="musicaTexto">
             Toca la margarita para música
         </div>
     </div>
+    
     <audio id="miMusica" loop preload="auto">
         <source src="https://www.dropbox.com/scl/fi/aaxeyu5xwxkps9w17we1g/audio-music-.mp3.mpeg?rlkey=70fcledht2u6fqytxxmrltmtf&st=y8pfa0mb&dl=1" type="audio/mpeg">
     </audio>
@@ -175,9 +176,9 @@
 
             <div class="detalles">
                 <div class="fecha">DOMINGO 29 DE MARZO</div>
-                <div class="lugar">📍 Salón "La Prechochura"<br>A las 3:30 PM</div>
+                <div class="lugar">📍 Salón "LA PRECHOCHURA"<br>Av. Oasis, Tarapoto</div>
                 <br>
-                <a href="http://googleusercontent.com/maps.google.com/5" target="_blank" style="color:var(--terracota); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--mostaza);">Ver ubicación en el mapa 🗺️</a>
+                <a href="https://www.google.com/maps/place/LA+PRECHOCHURA/@-6.4836252,-76.3962982,17z/data=!3m1!4b1!4m6!3m5!1s0x91ba0b32535f7107:0x626459933ff7eddb!8m2!3d-6.4836252!4d-76.3962982!16s%2Fg%2F11vmv_6z4p" target="_blank" style="color:var(--terracota); font-weight: bold; text-decoration: none; border-bottom: 2px solid var(--mostaza);">Ver ubicación en el mapa 🗺️</a>
             </div>
 
             <div class="reloj-tit">¿CUÁNTO FALTA?</div>
@@ -207,23 +208,18 @@
                 musica.play().then(() => {
                     btn.innerText = "⏸️";
                     btn.style.animation = "none";
-                    // Cambiamos el dedo al reproducir
                     iconoDedo.innerHTML = "⏸️";
                     iconoDedo.style.animation = "none";
-                    // Cambiamos el texto al reproducir
                     textoMusica.innerHTML = 'Música sonando...';
                 }).catch(error => {
-                    console.log("Error al reproducir audio:", error);
-                    alert("¡Inténtalo de nuevo presionando la margarita!");
+                    alert("¡Presiona la margarita para escuchar la música!");
                 });
             } else {
                 musica.pause();
                 btn.innerText = "🌼";
                 btn.style.animation = "pulse-margarita 2s infinite";
-                // Volvemos al dedo original
                 iconoDedo.innerHTML = "👉";
                 iconoDedo.style.animation = "move-dedo 1s infinite alternate";
-                // Volvemos al texto original
                 textoMusica.innerHTML = 'Toca la margarita para música';
             }
         }
@@ -234,7 +230,7 @@
 
         const numM = "51918668270"; 
         const numP = "51954132546";
-        const mensaje = encodeURIComponent(`¡Hola! Soy (${nombre}), confirmo nuestra asistencia, nos vemos en el cumpleaños. ✨`);
+        const mensaje = encodeURIComponent(`¡Hola! Soy (${nombre}), confirmo nuestra asistencia, nos vemos en el cumpleaños de Areli. ✨`);
         document.getElementById('wa-mama').href = `https://wa.me/${numM}?text=${mensaje}`;
         document.getElementById('wa-papa').href = `https://wa.me/${numP}?text=${mensaje}`;
 
